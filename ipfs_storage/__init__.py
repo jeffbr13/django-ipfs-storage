@@ -7,7 +7,7 @@ from django.utils.deconstruct import deconstructible
 import ipfsapi
 
 
-__version__ = '0.0.3'
+__version__ = '0.0.4'
 
 
 @deconstructible
@@ -65,7 +65,7 @@ class InterPlanetaryFileSystemStorage(Storage):
 
     def size(self, name: str) -> int:
         """Total size, in bytes, of IPFS content with multihash `name`."""
-        return self._ipfs_client.block_stat(name)['CumulativeSize']
+        return self._ipfs_client.object_stat(name)['CumulativeSize']
 
     def delete(self, name: str):
         """Unpin IPFS content from the daemon."""
