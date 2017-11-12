@@ -3,12 +3,14 @@ from urllib.parse import urlparse
 from django.conf import settings
 from django.core.files.base import File, ContentFile
 from django.core.files.storage import Storage
+from django.utils.deconstruct import deconstructible
 import ipfsapi
 
 
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 
 
+@deconstructible
 class InterPlanetaryFileSystemStorage(Storage):
     """IPFS Django storage backend.
 
