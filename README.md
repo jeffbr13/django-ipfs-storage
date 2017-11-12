@@ -98,13 +98,13 @@ See above.
 
 ### How do I delete an upload?
 
-Because of the bittorrent-like nature of IPFS, anyone who accesses a piece
-of content also has a copy, and rehosts it for you automatically until it 
-leaves their node's local cache. Yay bandwidth costs! Boo censorship!
+Because of the distributed nature of IPFS, anyone who accesses a piece
+of content keeps a copy, and reseeds it for you automatically until it's 
+evicted from their node's local cache. Yay bandwidth costs! Boo censorship!
 
-Unfortunately, if you're trying to censor yourself (often quite necessary)
+Unfortunately, if you're trying to censor yourself (often quite necessary),
 this means the best we can do is unpin the piece of content from your own IPFS node(s)
-and hope nobody else has pinned it. This is `TODO`.
+and hope nobody else has pinned it.
 
 ### How do I securely expose my IPFS daemon's API to connect remotely?
 

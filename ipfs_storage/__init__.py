@@ -7,7 +7,7 @@ from django.utils.deconstruct import deconstructible
 import ipfsapi
 
 
-__version__ = '0.0.2'
+__version__ = '0.0.3'
 
 
 @deconstructible
@@ -63,8 +63,19 @@ class InterPlanetaryFileSystemStorage(Storage):
         """Returns name. Only provided for compatibility with Storage interface."""
         return name
 
+    def size(self, name: str) -> int:
+        """Total size, in bytes, of IPFS content with multihash `name`."""
+        return self._ipfs_client.block_stat(name)['CumulativeSize']
+
+    def delete(self, name: str):
+        """Unpin IPFS content from the daemon."""
+        self._ipfs_client.pin_rm(name)
+
     def url(self, name: str):
-        """
+        """Returns an HTTP-accessible Gateway URL by default.
+
+        Override this if you want direct `ipfs://…` URLs or something.
+
         :param name: IPFS Content ID multihash.
         :return: HTTP URL to access the content via an IPFS HTTP Gateway.
         """
